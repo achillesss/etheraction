@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Licenses on 精通以太坊</title>
+    <link>https://ether.goall.top/license.html</link>
+    <description>Recent content in Licenses on 精通以太坊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>根据Apache 2.0 许可发布</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 20:10:46 +0100</lastBuildDate>
+    
+	<atom:link href="https://ether.goall.top/license/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>License</title>
+      <link>https://ether.goall.top/license/</link>
+      <pubDate>Wed, 09 Mar 2016 20:10:46 +0100</pubDate>
+      
+      <guid>https://ether.goall.top/license/</guid>
+      <description>Copyright 2018 虞双齐 - devysq@gmail.com
+Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</description>
+    </item>
+    
+  </channel>
+</rss>

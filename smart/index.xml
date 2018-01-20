@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smarts on 精通以太坊</title>
+    <link>https://ether.goall.top/smart.html</link>
+    <description>Recent content in Smarts on 精通以太坊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>根据Apache 2.0 许可发布</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
+    
+	<atom:link href="https://ether.goall.top/smart/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>智能合约</title>
+      <link>https://ether.goall.top/smart/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://ether.goall.top/smart/</guid>
+      <description>待定
+还没有开始写哦&amp;hellip;.
+ </description>
+    </item>
+    
+  </channel>
+</rss>
