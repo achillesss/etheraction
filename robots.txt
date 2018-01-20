@@ -1,0 +1,25 @@
+
+User-agent: *
+
+Disallow: /basic/
+Disallow: /basic/ethereum/
+Disallow: /basic/ethereum/gas.html
+Disallow: /solidity/doc/
+Disallow: /solidity/doc/introduction-to-smart-contracts.html
+Disallow: /solidity/doc/installing-solidity.html
+Disallow: /solidity/doc/solidity-by-example.html
+Disallow: /action/
+Disallow: /action/game/
+Disallow: /action/lottery/
+Disallow: /action/token/
+Disallow: /license/
+Disallow: /smart/
+Disallow: /
+Disallow: /action.html
+Disallow: /basic.html
+Disallow: /categories.html
+Disallow: /license.html
+Disallow: /smart.html
+Disallow: /solidity.html
+Disallow: /tags.html
+Disallow: /

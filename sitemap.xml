@@ -18,8 +18,43 @@
   </url>
   
   <url>
+    <loc>https://ether.goall.top/solidity/doc/</loc>
+    <lastmod>2018-01-20T06:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/solidity/doc/introduction-to-smart-contracts.html</loc>
+    <lastmod>2018-01-20T06:15:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/solidity/doc/installing-solidity.html</loc>
+    <lastmod>2018-01-20T06:16:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/solidity/doc/solidity-by-example.html</loc>
+    <lastmod>2018-01-20T06:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ether.goall.top/action/</loc>
     <lastmod>2018-01-19T16:54:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/action/game/</loc>
+    <lastmod>2018-01-19T16:56:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/action/lottery/</loc>
+    <lastmod>2018-01-19T16:56:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/action/token/</loc>
+    <lastmod>2018-01-19T16:56:16+08:00</lastmod>
   </url>
   
   <url>
@@ -63,6 +98,12 @@
   <url>
     <loc>https://ether.goall.top/smart.html</loc>
     <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/solidity.html</loc>
+    <lastmod>2018-01-20T06:10:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,53 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>精通以太坊</title>
-    <link>https://ether.goall.top/</link>
-    <description>Recent content on 精通以太坊</description>
+    <title>Solidities on 精通以太坊</title>
+    <link>https://ether.goall.top/solidity.html</link>
+    <description>Recent content in Solidities on 精通以太坊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>根据Apache 2.0 许可发布</copyright>
-    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jan 2018 06:10:54 +0800</lastBuildDate>
     
-	<atom:link href="https://ether.goall.top/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ether.goall.top/solidity/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>基础知识</title>
-      <link>https://ether.goall.top/basic/</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/basic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>以太坊概念</title>
-      <link>https://ether.goall.top/basic/ethereum/</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/basic/ethereum/</guid>
-      <description>开始前了解以太坊基础概念。</description>
-    </item>
-    
-    <item>
-      <title>理解Gas</title>
-      <link>https://ether.goall.top/basic/ethereum/gas.html</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/basic/ethereum/gas.html</guid>
-      <description>背景介绍 以太坊是一个区块链网络，而Ether(ETH)是这个网络的助燃器。当你发送Token、执行合约、转移ETH或者在此区块上干其他的。你必须为此计算而支出，此支出是通过 Gas计算，最终将gas以ETH支付。
-需要注意的是，无论交易成功与否，你都需为此支付手续费。即使交易失败，可矿工还是得为此交易进行校验和计算，你占用使用了计算资源所以必须和成功的交易一样，为此支付手续费。
-你可在 etherscan.io 上查看交易手续费（gas limit * gas price）的情况，在钱包中你是无法选择多少交易费的，因为实际交易费是矿工根据计算得出的，并记录在包含此交易的区块中。
-概要 当你听到gas时，是在讨论两个东西：
- Gas Limit Gas Price  交易费计算就是Gas Limit*Gas Price。大家说“Gas”时，一般所值得是“Gas Limit”
-你可以把gas limit看成是汽车所需多少升燃油。把gas price看成是燃油单价。
- 对于汽车，每升(unit)汽油 ￥6.46 （price） 对于以太坊,每gas( unit) 是 20 GWEI (price)  继续想，就是：
- 10升汽油就是 ￥64.6 21000 个 gas 就是 20*21000 GWEI= 420000 GWEI= 0.00042 ETH  也就是说本次交易手续为 0.00042 Ether。
-发送Token一般需要 ~50000 gas 到 ~100000 gas ,因此交易手续费增加到 0.001 ETH - 0.002 ETH。
-其中以太坊ETH到GWEI的转换关系是，这些多是以太币的计算单位：
- Kwei(Babbage) = 10^{3} Wei Mwei(Lovelace) = 10^{6} Wei Gwei(Shannon) = 10^{9} Wei Microether(Szabo) = 10^{12} Wei Milliether(Finney) = 10^{15} Wei Ether = 10^{18} Wei  Gas Gas 是以太坊中一种特定的命名，表示执行一个操作所需要的多少计算工作。 比如要执行一次加密Keccak256将消耗30gas。在以太坊中每个操作动作都有对应的gas。更多内容可查看What is gas (StackExchange)。</description>
-    </item>
     
     <item>
       <title>简介</title>
@@ -115,85 +78,6 @@ solcjs 的命令行选项同 solc 和一些工具(如 geth )是不兼容的。so
       <description>投票 下面合约十分复杂，但也展示了 Solidity 的许多特性。它实现的是一个投票合约。当然，电子投票的主要问题是如何确保合法投票人权利和避免暗箱操作。这里，我们先不需处理这些问题，先至少能看到如何委托投票，能自动记票，同时还是完全透明的。
 想法是为每次选票创建一个合约，提供投票项简称。合约创建者充当主席，给每个地址分配投票权。地址背后的人类，就可以自行投票或者将投票权委托给他信任的第三方。在投票截止时，winningProposal方法返回投票数最多的提案。
 pragma solidity ^0.4.16; /// @title 代表团投票 contract Ballot { // 定义一个新的复合类型，会作为合约变量。 // 代表一名选民。 struct Voter { uint weight; // 累计的投票权重 bool voted; // 为 true 说明选名已投票 address delegate; // 选民委托给第三方 uint vote; // 投票提案项 } // 投票单个提案项 struct Proposal { bytes32 name; // 简称(32字节) uint voteCount; // 获票累计数 } address public chairperson; // 声明了一个状态变量来存储每个地址所代表的 `Voter` 信息。 mapping(address =&amp;gt; Voter) public voters; // 声明一个 `Proposal` 动态数组.</description>
-    </item>
-    
-    <item>
-      <title>实战</title>
-      <link>https://ether.goall.top/action/</link>
-      <pubDate>Fri, 19 Jan 2018 16:54:03 +0800</pubDate>
-      
-      <guid>https://ether.goall.top/action/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>以太碟游戏</title>
-      <link>https://ether.goall.top/action/game/</link>
-      <pubDate>Fri, 19 Jan 2018 16:56:02 +0800</pubDate>
-      
-      <guid>https://ether.goall.top/action/game/</guid>
-      <description>待定
-还没有开始写哦&amp;hellip;.
- </description>
-    </item>
-    
-    <item>
-      <title>快3彩票</title>
-      <link>https://ether.goall.top/action/lottery/</link>
-      <pubDate>Fri, 19 Jan 2018 16:56:10 +0800</pubDate>
-      
-      <guid>https://ether.goall.top/action/lottery/</guid>
-      <description>待定
-还没有开始写哦&amp;hellip;.
- </description>
-    </item>
-    
-    <item>
-      <title>五彩石代币</title>
-      <link>https://ether.goall.top/action/token/</link>
-      <pubDate>Fri, 19 Jan 2018 16:56:16 +0800</pubDate>
-      
-      <guid>https://ether.goall.top/action/token/</guid>
-      <description>五彩石代币 是以太坊的Token资产实现。
-待定
-还没有开始写哦&amp;hellip;.
- </description>
-    </item>
-    
-    <item>
-      <title>License</title>
-      <link>https://ether.goall.top/license/</link>
-      <pubDate>Wed, 09 Mar 2016 20:10:46 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/license/</guid>
-      <description>Copyright 2018 虞双齐 - devysq@gmail.com
-Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</description>
-    </item>
-    
-    <item>
-      <title>智能合约</title>
-      <link>https://ether.goall.top/smart/</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/smart/</guid>
-      <description>待定
-还没有开始写哦&amp;hellip;.
- </description>
-    </item>
-    
-    <item>
-      <title>精通以太坊</title>
-      <link>https://ether.goall.top/</link>
-      <pubDate>Tue, 08 Mar 2016 21:07:13 +0100</pubDate>
-      
-      <guid>https://ether.goall.top/</guid>
-      <description> 持续写作
- 将以太坊的学习过程，积累为一笔有实际指导意义的电子书，供大家参考查验。
-提醒
-一步一步写作中&amp;hellip;.
- 欢迎
-欢迎投稿、反馈错误、一起学习&amp;hellip;.
- </description>
     </item>
     
   </channel>
