@@ -80,5 +80,32 @@ solcjs 的命令行选项同 solc 和一些工具(如 geth )是不兼容的。so
 pragma solidity ^0.4.16; /// @title 代表团投票 contract Ballot { // 定义一个新的复合类型，会作为合约变量。 // 代表一名选民。 struct Voter { uint weight; // 累计的投票权重 bool voted; // 为 true 说明选名已投票 address delegate; // 选民委托给第三方 uint vote; // 投票提案项 } // 投票单个提案项 struct Proposal { bytes32 name; // 简称(32字节) uint voteCount; // 获票累计数 } address public chairperson; // 声明了一个状态变量来存储每个地址所代表的 `Voter` 信息。 mapping(address =&amp;gt; Voter) public voters; // 声明一个 `Proposal` 动态数组.</description>
     </item>
     
+    <item>
+      <title>深入了解 Solidity</title>
+      <link>https://ether.goall.top/solidity/doc/depth/</link>
+      <pubDate>Sun, 21 Jan 2018 06:29:18 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/depth/</guid>
+      <description>此章节将介绍关于 Solidity 所应了解的一切。如果有些在这没有，请在 Gitter反馈给我们或者在 GitHub 上发一个PR。</description>
+    </item>
+    
+    <item>
+      <title>源文件布局</title>
+      <link>https://ether.goall.top/solidity/doc/depth/layout-of-source-files.html</link>
+      <pubDate>Sun, 21 Jan 2018 06:29:18 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/depth/layout-of-source-files.html</guid>
+      <description>源文件中可以定义任意个合约(contract)、嵌入(inlucde)和杂注(pragma)指令。
+版本杂注 源文件中能够(也应该)用所谓版本杂注，以便拒绝被含有不兼容性变更的高版本编译器所编译。 我们尽量保持最小变更，特别是语义变化而引起语法变更的，但这总不可能避免。因此，对于有重大变化的新版本，通读更新日志是一个不错的建议。大版本的版本号始终是 0.x.0或者 x.0.0 形式。
+版本杂注使用方式如下：
+pragma solidity ^0.4.0;  这样的源文件将不会使用低于版本 0.4.0 的编译器编译，也不适用于从 0.5.0 开始的编译器（被 ^ 限制）。 这做法背后的思想是，在版本 0.5.0 之前不会有任何重大改变，所以我们可确保代码始终按照我们的意愿进行编译。我们没有修复编译器的确切版本，因此补丁版仍然是有可能的。
+可以为编译器指定更复杂的编译规则，指令表达式遵循 npm 版本语义。
+导入其他源文件 语法与语义 Solidity 支持导入语句。尽管 Solidity 还不能知道 &amp;ldquo;default export&amp;rdquo; 的概念，但已经 非常类似 JavaScript 用法（从 ES6 起）。
+在全局级上，你可使用下面格式使用导入语句：
+import &amp;quot;filename&amp;quot;;  此语句将从 filename 中导入所有的全局符号到到当前全局域中（不同于 ES6 但 Solidity 是向后兼容）。
+import * as symbolName from &amp;quot;filename&amp;quot;;  &amp;hellip;&amp;hellip;创建一个新全局符号 symbolName，成员均是来自 &amp;quot;filename&amp;quot; 中全局符号。
+import {symbol1 as alias, symbol2} from &amp;quot;filename&amp;quot;;  &amp;hellip;&amp;hellip;创建新全局符号 alias 和 symbol2。symbol1和symbol2分别从 &amp;quot;filename&amp;quot;引入。</description>
+    </item>
+    
   </channel>
 </rss>

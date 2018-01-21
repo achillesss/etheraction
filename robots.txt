@@ -8,6 +8,8 @@ Disallow: /solidity/doc/
 Disallow: /solidity/doc/introduction-to-smart-contracts.html
 Disallow: /solidity/doc/installing-solidity.html
 Disallow: /solidity/doc/solidity-by-example.html
+Disallow: /solidity/doc/depth/
+Disallow: /solidity/doc/depth/layout-of-source-files.html
 Disallow: /action/
 Disallow: /action/game/
 Disallow: /action/lottery/
