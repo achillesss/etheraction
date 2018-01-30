@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://ether.goall.top/solidity/doc/depth/types.html</loc>
+    <lastmod>2018-01-22T06:41:39+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ether.goall.top/action/</loc>
     <lastmod>2018-01-19T16:54:03+08:00</lastmod>
   </url>
@@ -68,18 +73,29 @@
   </url>
   
   <url>
-    <loc>https://ether.goall.top/license/</loc>
+    <loc>https://ether.goall.top/about/</loc>
     <lastmod>2016-03-09T20:10:46+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://ether.goall.top/smart/</loc>
+    <loc>https://ether.goall.top/about/license.html</loc>
+    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/contract/</loc>
     <lastmod>2016-03-09T00:11:02+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://ether.goall.top/</loc>
     <lastmod>2016-03-08T21:07:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ether.goall.top/about.html</loc>
+    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -100,13 +116,7 @@
   </url>
   
   <url>
-    <loc>https://ether.goall.top/license.html</loc>
-    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ether.goall.top/smart.html</loc>
+    <loc>https://ether.goall.top/contract.html</loc>
     <lastmod>2016-03-09T00:11:02+01:00</lastmod>
     <priority>0</priority>
   </url>

@@ -77,7 +77,7 @@ solcjs 的命令行选项同 solc 和一些工具(如 geth )是不兼容的。so
       <guid>https://ether.goall.top/solidity/doc/solidity-by-example.html</guid>
       <description>投票 下面合约十分复杂，但也展示了 Solidity 的许多特性。它实现的是一个投票合约。当然，电子投票的主要问题是如何确保合法投票人权利和避免暗箱操作。这里，我们先不需处理这些问题，先至少能看到如何委托投票，能自动记票，同时还是完全透明的。
 想法是为每次选票创建一个合约，提供投票项简称。合约创建者充当主席，给每个地址分配投票权。地址背后的人类，就可以自行投票或者将投票权委托给他信任的第三方。在投票截止时，winningProposal方法返回投票数最多的提案。
-pragma solidity ^0.4.16; /// @title 代表团投票 contract Ballot { // 定义一个新的复合类型，会作为合约变量。 // 代表一名选民。 struct Voter { uint weight; // 累计的投票权重 bool voted; // 为 true 说明选名已投票 address delegate; // 选民委托给第三方 uint vote; // 投票提案项 } // 投票单个提案项 struct Proposal { bytes32 name; // 简称(32字节) uint voteCount; // 获票累计数 } address public chairperson; // 声明了一个状态变量来存储每个地址所代表的 `Voter` 信息。 mapping(address =&amp;gt; Voter) public voters; // 声明一个 `Proposal` 动态数组.</description>
+pragma solidity ^0.4.16; /// @title 代表团投票 contract Ballot { // 定义一个新的复合类型，会作为合约变量。 // 代表一名选民。 struct Voter { uint weight; // 累计的投票权重 bool voted; // 为 true 说明选名已投票 address delegate; // 选民委托给第三方 uint vote; // 投票提案项 } // 投票单个提案项 struct Proposal { bytes32 name; // 简称(32字节) uint voteCount; // 获票累计数 } address public chairperson; // 声明了一个状态变量来存储每个地址所代表的 `Voter` 信息。  mapping(address =&amp;gt; Voter) public voters; // 声明一个 `Proposal` 动态数组.</description>
     </item>
     
     <item>
@@ -105,6 +105,22 @@ pragma solidity ^0.4.0;  这样的源文件将不会使用低于版本 0.4.0 的
 import &amp;quot;filename&amp;quot;;  此语句将从 filename 中导入所有的全局符号到到当前全局域中（不同于 ES6 但 Solidity 是向后兼容）。
 import * as symbolName from &amp;quot;filename&amp;quot;;  &amp;hellip;&amp;hellip;创建一个新全局符号 symbolName，成员均是来自 &amp;quot;filename&amp;quot; 中全局符号。
 import {symbol1 as alias, symbol2} from &amp;quot;filename&amp;quot;;  &amp;hellip;&amp;hellip;创建新全局符号 alias 和 symbol2。symbol1和symbol2分别从 &amp;quot;filename&amp;quot;引入。</description>
+    </item>
+    
+    <item>
+      <title>类型</title>
+      <link>https://ether.goall.top/solidity/doc/depth/types.html</link>
+      <pubDate>Mon, 22 Jan 2018 06:41:39 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/depth/types.html</guid>
+      <description>Solidity 是一门静态类型语言，意味着每个变量（状态变量和局部变量）类型都需要在编译期确定（或至少是已知的见下方 类型断言）。 Solidity 提供了几个基础类型，可以组合成复杂类型。
+此外，类型可在含运算符的表达式中交互。快速查阅各种运算，请见运算符优先级
+值类型 下面所列类型均可称为值类型，因为它们的变量总是值传递。即当作为方法参数或用作赋值时，总是值拷贝。
+布尔型 布尔类型 bool ，其只可能有的值是常量 true 和 false 。
+运算符有：
+ ! ： 逻辑否 &amp;amp;&amp;amp; ： 逻辑且(and) || ： 逻辑或(or) == ： 等于 != ： 不等于  || 和 &amp;amp;&amp;amp; 运算符常用短路求值(short-circuiting)策略。意思是在表达式 f(x) || g(y) 中，如果 f(x) 运算结果是 true ，则 g(y) 不会被运算，哪怕它有副作用。
+Wiki 短路求值（Short-circuit evaluation，又称最小化求值），是一种逻辑运算符的求值策略。只有当第一个运算数的值无法确定逻辑运算的结果时，才对第二个运算数进行求值。例如，当 AND 的第一个运算数的值为 false 时，其结果必定为 false ；当 OR 的第一个运算数为 true 时，最后结果必定为 true ，在这种情况下，就不需要知道第二个运算数的具体值。在一些语言中（如Lisp），默认的逻辑运算符就是短路运算符，而在另一些语言中（如 Java，Ada ），短路和非短路的运算符都存在。对于一些逻辑运算，如 XOR，短路求值是不可能的 。
+短路表达式x AND y，事实上等价于条件语句：if x then y else false。短路表达式x OR y，则等价于条件语句：if x then true else y。</description>
     </item>
     
   </channel>
