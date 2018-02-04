@@ -11,6 +11,8 @@ Disallow: /solidity/doc/solidity-by-example.html
 Disallow: /solidity/doc/depth/
 Disallow: /solidity/doc/depth/layout-of-source-files.html
 Disallow: /solidity/doc/depth/types.html
+Disallow: /solidity/doc/units-and-global-variables.html
+Disallow: /solidity/doc/control-structures.html
 Disallow: /action/
 Disallow: /action/game/
 Disallow: /action/lottery/

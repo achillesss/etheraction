@@ -123,5 +123,29 @@ Wiki 短路求值（Short-circuit evaluation，又称最小化求值），是一
 短路表达式x AND y，事实上等价于条件语句：if x then y else false。短路表达式x OR y，则等价于条件语句：if x then true else y。</description>
     </item>
     
+    <item>
+      <title>单位和全局变量</title>
+      <link>https://ether.goall.top/solidity/doc/units-and-global-variables.html</link>
+      <pubDate>Thu, 01 Feb 2018 06:59:32 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/units-and-global-variables.html</guid>
+      <description>以太币单位 一个带有 wei，finney， szabo 或 ether 后缀的字面量数字，可在以太币各单位间转换。没有后缀的以太币数字假定为 Wei。例如 2 ether == 2000 finney 计算结果为 true.
+Tip
+ Kwei(Babbage) = 10 ** 3 Wei Mwei(Lovelace) = 10 ** 6 Wei Gwei(Shannon) = 10 ** 9 Wei Microether(Szabo) = 10 ** 12 Wei Milliether(Finney) = 10 ** 15 Wei Ether = 10 ** 18 Wei   时间单位 有后缀 seconds，minutes，hours，days，weeks 或 years 的字面量数字，可在时间上互转。时间的基本单位是秒，如下时间为公理：
+ 1 == 1 seconds 1 minutes == 60 seconds 1 hours == 60 minutes 1 days == 24 hours 1 weeks == 7 days 1 years == 365 days  请小心使用这些单位进行日历计算，因为不是每年都有 365 天，甚至因为闰秒每天不都有 24 小时。由于闰秒无法预测，一个确切的日历库必须由外部预言（external oracle）进行更新。</description>
+    </item>
+    
+    <item>
+      <title>表达式与控制结构</title>
+      <link>https://ether.goall.top/solidity/doc/control-structures.html</link>
+      <pubDate>Sun, 04 Feb 2018 07:50:30 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/control-structures.html</guid>
+      <description>入参与出参 同 JavaScript 相同的是，函数可以把参数作为输入。不同于 JavaScript 和 C 的是也可返回任意数量的参数作为输出。
+入参 输入参数声明方式与定义变量相同。作为例外，未使用的参数可以省略变量名称。例如，假设希望合约接受具有两个整数的外部调用，会如下写：
+pragma solidity ^0.4.16; contract Simple { function taker(uint _a, uint _b) public pure { // 用 _a 和 _b 做些事情 } }  出参 在 returns 关键字后声明出参语法同入参。例如，假设希望返回两个结果：两个给定整数的总和和乘积，那么会写成：
+pragma solidity ^0.4.16; contract Simple { function arithmetics(uint _a, uint _b) public pure returns (uint o_sum, uint o_product) { o_sum = _a + _b; o_product = _a * _b; } }  可忽略出参参数名，输出值也可使用 return 语句指定。return语句也可返回多个值，见多值返回。返回参数被初始化为默认值零，如果没有明确赋值则保持为零。</description>
+    </item>
+    
   </channel>
 </rss>
