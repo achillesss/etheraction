@@ -147,5 +147,20 @@ pragma solidity ^0.4.16; contract Simple { function taker(uint _a, uint _b) publ
 pragma solidity ^0.4.16; contract Simple { function arithmetics(uint _a, uint _b) public pure returns (uint o_sum, uint o_product) { o_sum = _a + _b; o_product = _a * _b; } }  可忽略出参参数名，输出值也可使用 return 语句指定。return语句也可返回多个值，见多值返回。返回参数被初始化为默认值零，如果没有明确赋值则保持为零。</description>
     </item>
     
+    <item>
+      <title>合约</title>
+      <link>https://ether.goall.top/solidity/doc/contracts.html</link>
+      <pubDate>Tue, 06 Feb 2018 06:48:06 +0800</pubDate>
+      
+      <guid>https://ether.goall.top/solidity/doc/contracts.html</guid>
+      <description>Solidity 中的合约类似面向对象编程语言中的类，包含持久化数据（状态变量）和可修改这些变量的函数。通过 EVM 方法来调用另一个合约中函数，同时切换上下文使得原合约状态变量不可访问。
+创建合约 合同可以通过以太坊交易从“外部”或从合约中创建。IDE 如 Remix 界面操作全流程创建合约。
+以太坊中，最好通过 JavaScript API web3.js 编写创建智能合约。当前有 web3.eth.Contract API 可创建合约。
+当创建合约时，它的构造器（一个名称和合约名相同的函数）会执行一次。构造函数可选，但只允许有一个且不支持重载。
+在 EVM 内部，构造函数入参在合约自身代码之后通过 ABI 编码，如果使用 web3.js 则不需要关心这些细节。
+当合约创建合约时，创建者必须事先清楚被创建合约源代码（和字节码），这意味着不可能循环创建合约。
+pragma solidity ^0.4.16; contract OwnedToken { // TokenCreator 是下方定义的合约类型  // 只要不用于创建新合约，引用 TokenCreator creator; address owner; bytes32 name; // 此合约构造器将注册创建者和分配名称 function OwnedToken(bytes32 _name) public { // 用状态变量名访问状态变量，而不是用 this.owner，这也适合在函数中 。 // 也只能调用这些状态变量，因为合约自身尚未创建。  owner = msg.sender; // We do an explicit type conversion from `address` // to `TokenCreator` and assume that the type of // the calling contract is TokenCreator, there is // no real way to check that.</description>
+    </item>
+    
   </channel>
 </rss>

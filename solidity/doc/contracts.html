@@ -1,0 +1,617 @@
+<!DOCTYPE html><html class="no-js" lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>合约 - 精通以太坊</title><meta name="generator" content="Hugo 0.31.1"><meta name="description" content="solidity文档中文版章节《合约》"><link rel="canonical" href="https://ether.goall.top/solidity/doc/contracts.html"><meta name="author" content="虞双齐"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="renderer" content="webkit"><meta name="applicable-device" content="pc,mobile"><meta name="MobileOptimized" content="width"><meta name="HandheldFriendly" content="true"><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="32x32" href="https://ether.goall.top/images/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="精通以太坊"><link rel="apple-touch-icon-precomposed" href="https://ether.goall.top/images/app-icon64x64.png"><meta name="msapplication-TileImage" content="/images/app-icon128x128.png"><meta name="msapplication-TileColor" content="#0e90d2"><meta property="og:url" content="https://ether.goall.top/solidity/doc/contracts.html"><meta property="og:title" content="精通以太坊"><meta property="og:image" content="https://ether.goall.top/images/logo.png"><meta name="apple-mobile-web-app-title" content="精通以太坊"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" type="image/x-icon" href="https://ether.goall.top/images/favicon.ico"><link rel="icon" type="image/x-icon" href="https://ether.goall.top/images/favicon.ico"><style>@font-face{font-family:Icon;src:url(https://ether.goall.top/fonts/icon.eot);src:url(https://ether.goall.top/fonts/icon.eot) format('embedded-opentype'),url(https://ether.goall.top/fonts/icon.woff) format('woff'),url(https://ether.goall.top/fonts/icon.ttf) format('truetype'),url(https://ether.goall.top/fonts/icon.svg) format('svg');font-weight:400;font-style:normal}</style><link rel="stylesheet" href="https://ether.goall.top/stylesheets/application.css"><link rel="stylesheet" href="https://ether.goall.top/stylesheets/palette.css"><link rel="stylesheet" href="//fonts.cat.net/css?family=Noto%20Sans%20CJK:400,700|Ubuntu&#43;Mono"><style>body,input{font-family:'Noto Sans CJK',Helvetica,Arial,sans-serif}code,pre{font-family:'Ubuntu Mono','Courier New',Courier,monospace}</style><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><script src="https://ether.goall.top/javascripts/modernizr.js"></script></head><body dir="ltr" data-md-color-primary="light-gren" data-md-color-accent="indigo"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search"> <label class="md-overlay" data-md-component="overlay" for="drawer"></label> <a href="#getting-started" tabindex="1" class="md-skip">Skip to content</a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://ether.goall.top" title="精通以太坊" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">精通以太坊 </span><span class="md-header-nav__topic">合约</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="search"></label></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/ysqi/etheraction" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#github" width="24" height="24"></use></svg></div><div class="md-source__repository">ysqi/etheraction</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href="https://ether.goall.top/basic/" title="基础知识" class="md-tabs__link">基础知识</a></li><li class="md-tabs__item"><a href="https://ether.goall.top/contract/" title="智能合约" class="md-tabs__link">智能合约</a></li><li class="md-tabs__item"><a href="https://ether.goall.top/solidity/doc" title="Solidiy官方文档中文版" class="md-tabs__link md-tabs__link--active">Solidiy官方文档中文版</a></li><li class="md-tabs__item"><a href="https://ether.goall.top/action" title="实战" class="md-tabs__link">实战</a></li><li class="md-tabs__item"><a href="https://ether.goall.top/about" title="关于" class="md-tabs__link">关于</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="drawer"><span class="md-nav__button md-logo"><i class="md-icon"></i> </span>精通以太坊22</label><div class="md-nav__source"><a href="https://github.com/ysqi/etheraction" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#github" width="24" height="24"></use></svg></div><div class="md-source__repository">ysqi/etheraction</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-0" type="checkbox" id="nav-0"> <label class="md-nav__link" for="nav-0">基础知识</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-0">基础知识</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/basic/" title="说明" class="md-nav__link">说明</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-0-1" type="checkbox" id="nav-0-1"> <label class="md-nav__link" for="nav-0-1">以太坊概念</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-0-1">以太坊概念</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/basic/ethereum/gas.html" title="理解Gas" class="md-nav__link">理解Gas</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1"> <label class="md-nav__link" for="nav-1">智能合约</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-1">智能合约</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/contract/" title="前言" class="md-nav__link">前言</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked="checked"> <label class="md-nav__link" for="nav-2">Solidiy官方文档中文版</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Solidiy官方文档中文版</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/" title="简介" class="md-nav__link">简介</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/introduction-to-smart-contracts.html" title="智能合约介绍" class="md-nav__link">智能合约介绍</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/installing-solidity.html" title="安装 Solidity" class="md-nav__link">安装 Solidity</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/solidity-by-example.html" title="Solidity 示例" class="md-nav__link">Solidity 示例</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" checked="checked"> <label class="md-nav__link" for="nav-2-4">深入了解 Solidity</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-2-4">深入了解 Solidity</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/depth/layout-of-source-files.html" title="源文件布局" class="md-nav__link">源文件布局</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/depth/types.html" title="类型" class="md-nav__link">类型</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/units-and-global-variables.html" title="单位和全局变量" class="md-nav__link">单位和全局变量</a></li><li class="md-nav__item"><a href="https://ether.goall.top/solidity/doc/control-structures.html" title="表达式与控制结构" class="md-nav__link">表达式与控制结构</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc"> <label class="md-nav__link md-nav__link--active" for="toc">合约</label> <a href="https://ether.goall.top/solidity/doc/contracts.html" title="合约" class="md-nav__link md-nav__link--active">合约</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"> <label class="md-nav__link" for="nav-3">实战</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">实战</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/action/" title="实战" class="md-nav__link">实战</a></li><li class="md-nav__item"><a href="https://ether.goall.top/action/game/" title="以太碟游戏" class="md-nav__link">以太碟游戏</a></li><li class="md-nav__item"><a href="https://ether.goall.top/action/lottery/" title="快3彩票" class="md-nav__link">快3彩票</a></li><li class="md-nav__item"><a href="https://ether.goall.top/action/token/" title="五彩石代币" class="md-nav__link">五彩石代币</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"> <label class="md-nav__link" for="nav-4">关于</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">关于</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://ether.goall.top/about/" title="关于本书" class="md-nav__link">关于本书</a></li><li class="md-nav__item"><a href="https://ether.goall.top/about/license.html" title="License" class="md-nav__link">License</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><h4 class="md-nav__title" for="toc">Table of Contents</h4><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#creating-contracts" class="md-nav__link">创建合约</a></li><li class="md-nav__item"><a href="#Visibility-and-Getters" class="md-nav__link">可见性和可取性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#getter-functions" class="md-nav__link">取值函数 Getter</a></li></ul></nav></li><li class="md-nav__item"><a href="#function-modifiers" class="md-nav__link">函数修改器 Modifier</a></li><li class="md-nav__item"><a href="#constant-state-variables" class="md-nav__link">状态常量</a></li><li class="md-nav__item"><a href="#functions" class="md-nav__link">函数</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#view-funcation" class="md-nav__link">视图函数(View Function)</a></li><li class="md-nav__item"><a href="#pure-function" class="md-nav__link">纯函数(Pure Function)</a></li><li class="md-nav__item"><a href="#Fallback-function" class="md-nav__link">后备函数(Fallback Function)</a></li><li class="md-nav__item"><a href="#function-overloading" class="md-nav__link">函数重载</a></li></ul></nav></li><li class="md-nav__item"><a href="#events" class="md-nav__link">事件</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#low-level-interface-to-logs" class="md-nav__link">日志低阶接口</a></li><li class="md-nav__item"><a href="#additional-resources-for-understanding-events" class="md-nav__link">理解事件的额外资源</a></li></ul></nav></li><li class="md-nav__item"><a href="#Inheritance" class="md-nav__link">继承(Inheritance)</a></li><li class="md-nav__item"><a href="#arguments-for-base-constructors" class="md-nav__link">基类构造函数参数</a></li><li class="md-nav__item"><a href="#multiple-inheritance-and-linearization" class="md-nav__link">多重继承与线性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#inheriting-different-kinds-of-members-of-the-same-name" class="md-nav__link">多继承后同名处理</a></li></ul></nav></li><li class="md-nav__item"><a href="#abstract-contracts" class="md-nav__link">抽象函数</a></li><li class="md-nav__item"><a href="#interfaces" class="md-nav__link">接口</a></li><li class="md-nav__item"><a href="#libraries" class="md-nav__link">库(Library)</a></li><li class="md-nav__item"><a href="#call-protection-for-libraries" class="md-nav__link">安全调用库</a></li><li class="md-nav__item"><a href="#using-for" class="md-nav__link">使用 For</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/ysqi/etheraction/edit/master/content/solidity/doc/contracts.md" title="" class="md-icon md-content__icon">&#xE3C9;</a><h1>合约</h1><p>Solidity 中的合约类似面向对象编程语言中的类，包含持久化数据（状态变量）和可修改这些变量的函数。通过 EVM 方法来调用另一个合约中函数，同时切换上下文使得原合约状态变量不可访问。</p><h2 id="creating-contracts">创建合约</h2><p>合同可以通过以太坊交易从“外部”或从合约中创建。IDE 如 <a href="https://remix.ethereum.org/">Remix</a> 界面操作全流程创建合约。</p><p>以太坊中，最好通过 JavaScript API <a href="https://github.com/ethereum/web3.js">web3.js</a> 编写创建智能合约。当前有 <code>web3.eth.Contract</code> API 可创建合约。</p><p>当创建合约时，它的构造器（一个名称和合约名相同的函数）会执行一次。构造函数可选，但只允许有一个且不支持重载。</p><p>在 EVM 内部，构造函数入参在合约自身代码之后通过 <a href="http://solidity.readthedocs.io/en/latest/abi-spec.html#abi">ABI</a> 编码，如果使用 <a href="https://github.com/ethereum/web3.js">web3.js</a> 则不需要关心这些细节。</p><p>当合约创建合约时，创建者必须事先清楚被创建合约源代码（和字节码），这意味着不可能循环创建合约。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">OwnedToken</span> <span class="p">{</span>
+    <span class="c1">// TokenCreator 是下方定义的合约类型 </span>
+    <span class="c1">// 只要不用于创建新合约，引用</span>
+    <span class="n">TokenCreator</span> <span class="n">creator</span><span class="p">;</span>
+    <span class="kt">address</span> <span class="n">owner</span><span class="p">;</span>
+    <span class="kt">bytes32</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="c1">// 此合约构造器将注册创建者和分配名称</span>
+    <span class="kd">function</span> <span class="n">OwnedToken</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_name</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// 用状态变量名访问状态变量，而不是用 this.owner，这也适合在函数中 。</span>
+        <span class="c1">// 也只能调用这些状态变量，因为合约自身尚未创建。 </span>
+        <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span>
+        <span class="c1">// We do an explicit type conversion from `address`</span>
+        <span class="c1">// to `TokenCreator` and assume that the type of</span>
+        <span class="c1">// the calling contract is TokenCreator, there is</span>
+        <span class="c1">// no real way to check that.</span>
+        <span class="n">creator</span> <span class="o">=</span> <span class="n">TokenCreator</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">);</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">_name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">changeName</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">newName</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// 只有创建者可修改名称，</span>
+        <span class="c1">// 合约可显示转换为地址，进行地址比较。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="n">creator</span><span class="p">))</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">newName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nb">transfer</span><span class="p">(</span><span class="kt">address</span> <span class="n">newOwner</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// 只有当前拥有者可转账到 Token </span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">!=</span> <span class="n">owner</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="c1">// 询问创建者是否可转账 ，此函数在下方已定义。</span>
+        <span class="c1">// 如果调用失败（如 gas 耗尽），执行将立即停止。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">creator</span><span class="p">.</span><span class="n">isTokenTransferOK</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">newOwner</span><span class="p">))</span>
+            <span class="n">owner</span> <span class="o">=</span> <span class="n">newOwner</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">TokenCreator</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">createToken</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">name</span><span class="p">)</span>
+       <span class="kr">public</span>
+       <span class="k">returns</span> <span class="p">(</span><span class="n">OwnedToken</span> <span class="n">tokenAddress</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 创建一个 Token 合约，并返回其地址。 </span>
+        <span class="c1">// 从 JavaScript 方面来说，返回“地址”类型很简单，</span>
+        <span class="c1">// 因为这是在 ABI 中可用的常见类型 </span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">OwnedToken</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">changeName</span><span class="p">(</span><span class="n">OwnedToken</span> <span class="n">tokenAddress</span><span class="p">,</span> <span class="kt">bytes32</span> <span class="n">name</span><span class="p">)</span>  <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// 外部类型  `tokenAddress` 就是一个 `address`.</span>
+        <span class="n">tokenAddress</span><span class="p">.</span><span class="n">changeName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">isTokenTransferOK</span><span class="p">(</span><span class="kt">address</span> <span class="n">currentOwner</span><span class="p">,</span> <span class="kt">address</span> <span class="n">newOwner</span><span class="p">)</span>
+        <span class="kr">public</span>
+        <span class="kr">view</span>
+        <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">ok</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 条件检查</span>
+        <span class="kt">address</span> <span class="n">tokenAddress</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nf">keccak256</span><span class="p">(</span><span class="n">newOwner</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kt">bytes20</span><span class="p">(</span><span class="n">tokenAddress</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="Visibility-and-Getters">可见性和可取性</h2><p>因为 Solidity 有两种函数调用：消息调用（不发生 EVM 调用）和外部函数调用。函数和状态变量有四种可见性类型。函数可被指定为 <code>external</code>、<code>public</code>、<code>internal</code>或 <code>private</code>，默认为 <code>public</code>。 状态变量不能是<code>external</code>，默认为 <code>internal</code>。</p><ul><li><strong>external 外部的</strong></li></ul><p>外部函数是合约接口的一部分，可从其他合约和交易中执行。外部函数<code>f</code>不能当做内部函数调用（即调用<code>f()</code>错误，<code>this.f()</code>正确）。外部函数在接收大量数据时有时更有效率。</p><ul><li><strong>internal 内部的</strong></li></ul><p>这些函数和状态变量只能被内部访问（即从当前合约或派生合约），访问无需使用<code>this</code>。</p><ul><li><strong>public 公共的</strong></li></ul><p>公共函数作为合约接口的一部分，即可被内部调用也可通过消息调用。对于公共状态变量，会自动生成一个取值函数（[见下](&ldquo;#getter-functions&rdquo;)）。</p><ul><li><strong>private 私有的</strong></li></ul><p>私有函数和状态变量只能在当前定义他们的合约中可见，不包括派生合约。</p><div class="admonition tip"><p class="admonition-title">Tip</p><p>合约外界都可以看到合约中的所有内容，使用 <code>private</code> 只会阻止其他合约访问和修改信息，但在区块链之外仍然可见。</p></div><p>状态变量的可见性标识符在其类型之后给出，函数的可见性标识符在函数入参列表和出参列表之间给出。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+
+    <span class="kt">uint</span> <span class="kr">public</span> <span class="n">data</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">)</span> <span class="kr">private</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kd">function</span> <span class="n">setData</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">)</span> <span class="kr">internal</span> <span class="p">{</span> <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>下面示例中，<code>D</code> 能通过调用<code>c.getData()</code>从状态存储中获取<code>data</code>值，但无法调用<code>f</code>。合约<code>E</code>继承自<code>C</code>从而可调用<code>compute()</code></p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="c1">// 将编译失败</span>
+
+<span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kt">uint</span> <span class="kr">private</span> <span class="n">data</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">)</span> <span class="kr">private</span> <span class="k">returns</span><span class="p">(</span><span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kd">function</span> <span class="n">setData</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kd">function</span> <span class="n">getData</span><span class="p">()</span> <span class="kr">public</span> <span class="k">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">data</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kd">function</span> <span class="n">compute</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="kr">internal</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">D</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">readData</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">();</span>
+        <span class="kt">uint</span> <span class="n">local</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 错误： member `f` is not visible</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">local</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">getData</span><span class="p">();</span>
+        <span class="n">local</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 错误: member `compute` is not visible</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">E</span> <span class="kr">is</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">g</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">();</span>
+        <span class="kt">uint</span> <span class="n">val</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 访问内部成员（派生自父合约）</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="getter-functions">取值函数 Getter</h3><p>编译器自动为所有的 <strong>public</strong> 状态变量分别生成取值函数。如下合约，编译器自动生成一个名为<code>data</code>的函数，其函数无入参并返回类型为<code>uint</code>的状态变量<code>data</code>的值。状态变量的初始化可以在声明时完成。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kt">uint</span> <span class="kr">public</span> <span class="n">data</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Caller</span> <span class="p">{</span>
+    <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">();</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="kt">uint</span> <span class="n">local</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>取值函数是外部可见的。如果表达式是内部访问（不带<code>this.</code>），则按一个状态变量处理。如果是外部访问(带<code>this.</code>)则当做一个函数处理。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kt">uint</span> <span class="kr">public</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="n">x</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 内部访问</span>
+        <span class="kt">uint</span> <span class="n">val</span> <span class="o">=</span> <span class="nb">this</span><span class="p">.</span><span class="n">data</span><span class="p">();</span> <span class="c1">// 外部访问</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>来个复杂点的示例：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">Complex</span> <span class="p">{</span>
+    <span class="kd">struct</span> <span class="n">Data</span> <span class="p">{</span>
+        <span class="kt">uint</span> <span class="n">a</span><span class="p">;</span>
+        <span class="kt">bytes3</span> <span class="n">b</span><span class="p">;</span>
+        <span class="kd">mapping</span> <span class="p">(</span><span class="kt">uint</span> <span class="o">=&gt;</span> <span class="kt">uint</span><span class="p">)</span> <span class="n">map</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">mapping</span> <span class="p">(</span><span class="kt">uint</span> <span class="o">=&gt;</span> <span class="kd">mapping</span><span class="p">(</span><span class="kt">bool</span> <span class="o">=&gt;</span> <span class="n">Data</span><span class="p">[]))</span> <span class="kr">public</span> <span class="n">data</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>它将生成如下形式的取值函数：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kd">function</span> <span class="n">data</span><span class="p">(</span><span class="kt">uint</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">arg2</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">arg3</span><span class="p">)</span> <span class="kr">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bytes3</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">arg1</span><span class="p">][</span><span class="n">arg2</span><span class="p">][</span><span class="n">arg3</span><span class="p">].</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">arg1</span><span class="p">][</span><span class="n">arg2</span><span class="p">][</span><span class="n">arg3</span><span class="p">].</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>请注意，结构中的映射字段会被省略，因为无法处理映射类型的键。</p><h2 id="function-modifiers">函数修改器 Modifier</h2><p>很容易使用修改器改变函数行为。例如可在执行该函数之前自动执行一个条件检查。修改器是合约的可继承属性，可被派生合约重写。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">11</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">owned</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">address</span> <span class="n">owner</span><span class="p">;</span>
+
+    <span class="c1">// 此合约有定义一个修改器，但未使用。将在派生合约中使用。</span>
+    <span class="c1">// 使用修改器的函数的函数体会被插入到特殊符号`_;`处。 </span>
+    <span class="c1">// </span>
+    <span class="c1">// 此修饰器意思是只能是合约拥有者才能调用此函数。</span>
+    <span class="kd">modifier</span> <span class="n">onlyOwner</span> <span class="p">{</span>
+        <span class="nb">require</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">);</span>
+        <span class="kr">_</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">mortal</span> <span class="kr">is</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="c1">// 此合约继承自`owned`， `onlyOwner`修饰器用于`close`函数中，</span>
+    <span class="c1">// 结果是只有合约中存储的 owner 才可调用`close`。</span>
+    <span class="kd">function</span> <span class="n">close</span><span class="p">()</span> <span class="kr">public</span> <span class="n">onlyOwner</span> <span class="p">{</span>
+        <span class="nb">selfdestruct</span><span class="p">(</span><span class="n">owner</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">priced</span> <span class="p">{</span>
+    <span class="c1">// 修改器可接受参数</span>
+    <span class="kd">modifier</span> <span class="n">costs</span><span class="p">(</span><span class="kt">uint</span> <span class="n">price</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">value</span> <span class="o">&gt;=</span> <span class="n">price</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kr">_</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Register</span> <span class="kr">is</span> <span class="n">priced</span><span class="p">,</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">mapping</span> <span class="p">(</span><span class="kt">address</span> <span class="o">=&gt;</span> <span class="kt">bool</span><span class="p">)</span> <span class="n">registeredAddresses</span><span class="p">;</span>
+    <span class="kt">uint</span> <span class="n">price</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">Register</span><span class="p">(</span><span class="kt">uint</span> <span class="n">initialPrice</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">price</span> <span class="o">=</span> <span class="n">initialPrice</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// 这里要点是 `payable`关键字，否则该函数将自动拒绝发送给它的以太币。 </span>
+    <span class="kd">function</span> <span class="n">register</span><span class="p">()</span> <span class="kr">public</span> <span class="kr">payable</span> <span class="n">costs</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">registeredAddresses</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">changePrice</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_price</span><span class="p">)</span> <span class="kr">public</span> <span class="n">onlyOwner</span> <span class="p">{</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">_price</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Mutex</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">locked</span><span class="p">;</span>
+    <span class="kd">modifier</span> <span class="n">noReentrancy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">require</span><span class="p">(</span><span class="o">!</span><span class="n">locked</span><span class="p">);</span>
+        <span class="n">locked</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="kr">_</span><span class="p">;</span>
+        <span class="n">locked</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 此函数被一个锁保护，意思是来自</span>
+    <span class="c1">// `msg.sender.call`的递归调用不能再次调用`f`。</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">()</span> <span class="kr">public</span> <span class="n">noReentrancy</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">require</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">.</span><span class="nb">call</span><span class="p">());</span>
+        <span class="k">return</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 返回 7 但仍然会调用修改器中的`locked = false`</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>一个函数上的多个修改器间用逗号分隔，将按给出的顺序依次执行。</p><div class="admonition warning"><p class="admonition-title">Warning</p><p>Solidity的较早版本中，有修改器的函数的 <code>return</code> 语句的行为不同。</p></div><p>修改器或函数体中显式使用<code>return</code>，仅仅是退出当前修改器或函数体，并将返回结果赋值，而执行流程会在修改器中的“_”之后继续执行。</p><p>修改器入参可以是任意表达式。函数中引入的所有符号，修改器中均可见。但修改器中引入的符号在函数中不可见（因为它们有可能被重载）。</p><h2 id="constant-state-variables">状态常量</h2><p>可用<code>constant</code>定义状态变量，此时必须在编译期确定将常量表达式值赋值给此状态变量。不允许表达式访问存储、区块信息（如：<code>now</code>、<code>this.balance</code>或<code>block.number</code>）、执行信息（<code>msg.gas</code>）或者调用外部合约。允许表达式改变内存分配，但不允许影响其他内存对象。允许使用内置函数<code>keccak256</code>、<code>sha256</code>、<code>ripemd160</code>、<code>ecrecover</code>、<code>addmod</code>和<code>mulmod</code>（即使它们调用合约外部）。</p><p>允许改变内存分配是因为应可构造复杂的对象，例如，查找表。此功能尚未完全可用。</p><p>编译器不会为这些常量保留一个存储槽位置，而是都被相应的常量表达式替换（也许会被编译器优化为单个值）。</p><p>并非所有类型都可以定义为常量，只支持值类型和字符串。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kt">uint</span> <span class="kr">constant</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">32</span><span class="o">**</span><span class="mi">22</span> <span class="o">+</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="kr">constant</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
+    <span class="kt">bytes32</span> <span class="kr">constant</span> <span class="n">myHash</span> <span class="o">=</span> <span class="nf">keccak256</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="functions">函数</h2><h3 id="view-funcation">视图函数(View Function)</h3><p>函数可被定义为<code>view</code>，则说明此函数承诺不会修改合约状态。</p><p>以下语句被视为修改合约状态：</p><ol><li>写入状态变量。</li><li><a href="#events">发送事件</a>。</li><li><a href="https://ether.goall.top/solidity/doc/control-structures.html#creating-contracts-via-new">创建其他合约</a>。</li><li>使用 <code>selfdestruct</code>。</li><li>通过调用发送以太币。</li><li>调用其他未标记为<code>view</code>或<code>pure</code>的函数。</li><li>使用低级别调用。</li><li>使用包含某些操作码的内联汇编。</li></ol><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">view</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">42</span><span class="p">)</span> <span class="o">+</span> <span class="nb">now</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="admonition tip"><p class="admonition-title">Tip</p><p>constant 是 view 的一个别名。</p></div><div class="admonition tip"><p class="admonition-title">Tip</p><p>取值函数被标记为 <code>view</code>。</p></div><div class="admonition warning"><p class="admonition-title">Warning</p><p>编译器不会强制要求视图函数不修改状态。</p></div><h3 id="pure-function">纯函数(Pure Function)</h3><p>函数可被定义为 <code>pure</code>，则说明此函数承诺不读取或修改合约状态。</p><p>除上面列出的状态修改语句之外，以下内容被认为读取合约状态：</p><ol><li>读取状态变量。</li><li>访问<code>this.balance</code>或<code>&lt;address&gt;.balance</code>。</li><li>访问<code>block</code>、<code>tx</code>、<code>msg</code>（除<code>msg.sig</code>和<code>msg.data</code>）的任何成员信息。</li><li>调用任何未标记为<code>pure</code>的函数。</li><li>使用包含某些操作码的内联汇编。</li></ol><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">42</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="admonition warning"><p class="admonition-title">Warning</p><p>编译器不会强制要求纯函数不读取状态。</p></div><h3 id="Fallback-function">后备函数(Fallback Function)</h3><p>合约有且仅有一个无名函数，此函数无入参和返回值。如果没有任何其他函数与给定的函数标识符匹配（或者根本没有提供数据），它将在对该合约的调用中执行。</p><p>另外，此函数在合约收到以太币（且无数据）时执行。为了接收以太币，后备函数必须标记为<code>payable</code>。如果不标记，合约不能通过正常交易方式接受以太币。</p><p>此情况下，通常只有很少的瓦斯可用于此函数调用 (准确的是 2300 瓦斯)，所以要点是使得后备函数尽可能便宜。请注意，因为每次交易都会收取额外的 21000 瓦斯或更多的费用来进行签名检查，因此调用后备函数的交易比内部调用所需的气体要高得多。</p><p>特别是下面的操作会比提供给后备函数可用瓦斯量消耗更多的燃料：</p><ul><li>写存储。</li><li>创建合约。</li><li>调用消耗大量瓦斯的外部函数。</li><li>发送以太币。</li></ul><p>请确保在部署合同之前彻底测试后备函数，以确保执行成本低于 2300 瓦斯。</p><div class="admonition tip"><p class="admonition-title">Tip</p><p>尽管后备函数无入参，但然可以使用<code>msg.data</code>来获取随调用提供的 payload 信息。</p></div><div class="admonition warning"><p class="admonition-title">Warning</p><p>合约可直接接收以太币（不需要调用函数，即用<code>send</code>或<code>transfer</code>），但没有定义后备函数会抛出异常并退还以太币（ Solidiy v0.4.0 开始）。因此你如果希望合约接收以太币，必须实现后备函数。</p></div><div class="admonition warning"><p class="admonition-title">Warning</p><p></p><p>没有 payable 后备函数的合约可以接收以太币作为 coinbase 交易的收款人（区块奖励）或作为其他合约销毁时的资产转移目的地。</p><p>合约不能对上述这种以太币转移作出反应，因此也不能拒绝。这是因 EVM 和 solidity 设计模式决定了无法解决的问题。</p><p>这意味着，合约的 <code>this.balance</code> 可以比手工帐总和多（即在后备函数中有更新计数器）。</p><p></p></div><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">Test</span> <span class="p">{</span>
+    <span class="c1">// 所有发送到此合约的消息都会调用此函数（因为没有其他函数）。</span>
+    <span class="c1">// 发送以太币到此函合约会出现异常，</span>
+    <span class="c1">// 因为此后备函数未使用`payable`修饰器 。</span>
+    <span class="kd">function</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">uint</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 此合约可以接受所有以太币，别人无法追回。</span>
+<span class="kd">contract</span> <span class="n">Sink</span> <span class="p">{</span>
+    <span class="kd">function</span><span class="p">()</span> <span class="kr">public</span> <span class="kr">payable</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Caller</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">callTest</span><span class="p">(</span><span class="n">Test</span> <span class="n">test</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="n">test</span><span class="p">.</span><span class="nb">call</span><span class="p">(</span><span class="mh">0xabcdef01</span><span class="p">);</span> <span class="c1">// 哈希不存在，</span>
+        <span class="c1">// 结果是 test.x 变成 1。</span>
+
+        <span class="c1">// 如下不能通过编译</span>
+        <span class="c1">// 但是一旦有人发送以太币到 test 合约，</span>
+        <span class="c1">// 交易将失败并被拒绝转移以太币。</span>
+        <span class="c1">//test.send(2 ether);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="function-overloading">函数重载</h3><p>合约可以有多个同名不同参的函数，包括继承的函数。下面示例展示合约<code>A</code>有重载函数<code>f</code>。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_in</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_in</span><span class="p">,</span> <span class="kt">bytes32</span> <span class="n">_key</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>合约的外部函数也可重载，但只允许重载的外部函数的参数是外部类型。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="c1">// 无法编译</span>
+<span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="n">B</span> <span class="n">_in</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="n">B</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">_in</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">address</span> <span class="n">_in</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">address</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">_in</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">B</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div><p>尽管上述两个<code>f</code>函数重载在 Solidity 内部认为不同，但最终都接受的是 ABI 的地址类型。</p><div class="admonition info"><p class="admonition-title">Info</p><p>返回参数不作为函数重载标识的一部分。</p></div><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint8</span> <span class="n">_in</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint8</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">_in</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_in</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">_in</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>因为 <code>250</code> 即可转换为 <code>uint8</code>，也可是<code>uint256</code>，所以调用<code>f(50)</code>将出现类型错误。另一面，因为 256 无法隐式转换为 uint8 ，调用<code>f(256)</code>可转换为<code>f(uint256)</code>重载调用。</p><h2 id="events">事件</h2><p>事件可方便使用 EVM 日志记录工具，又可在 dapp 的用户界面中“调用”JavaScript 回调监听事件。</p><p>事件可继承，当它们被调用时，它们使得入参被存储在事务日志中 —— 区块链上的特殊结构数据。这些日志与合约地址相关联，被整合到区块链中，只要区块可访问就可访问此区块中的日志（ Frontier 版和 Homestead 版永久存储日志，但也许会在 Serenity 版中改变）。但不能在合约中直接访问日志和事件数据（即便是创建日志的合约）。</p><p>日志是可以通过简单支付验证（SPV）的，如果外部实体提供证明，它便验证日志确实存在于区块链中。但区块头必须提供，因为合约只能看到最后的 256 个区块。</p><p>事件参数可以标记为<code>indexed</code>（索引），有且最多三个参数可标记为索引，用做检索过滤主题：可在用户界面中利用索引参数筛选出特定值事件。其他所有非索引参数将被作为日志数据的一部分存储。</p><p>如果索引参数是数组（包括字符串和字节类型），则用它的 keccak-256 哈希值作为主题。除非定义事件为 <code>anonymous</code>（匿名），否则事件签名的哈希值也是主题之一，这表示无法通过事件名称筛选特定的匿名事件。</p><div class="admonition info"><p class="admonition-title">Info</p><p>索引参数将不会被存储。只能搜索这些值，但不可能自行检索这些值。</p></div><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">ClientReceipt</span> <span class="p">{</span>
+    <span class="kd">event</span> <span class="n">Deposit</span><span class="p">(</span>
+        <span class="kt">address</span> <span class="kr">indexed</span> <span class="n">_from</span><span class="p">,</span>
+        <span class="kt">bytes32</span> <span class="kr">indexed</span> <span class="n">_id</span><span class="p">,</span>
+        <span class="kt">uint</span> <span class="n">_value</span>
+    <span class="p">);</span>
+
+    <span class="kd">function</span> <span class="n">deposit</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_id</span><span class="p">)</span> <span class="kr">public</span> <span class="kr">payable</span> <span class="p">{</span>
+        <span class="c1">// 对此函数的任何调用（包括嵌套循环）都可直接使用 </span>
+        <span class="c1">// JavaScript API 过滤查询到`Deposit`事件被调用 </span>
+        <span class="n">Deposit</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">,</span> <span class="n">_id</span><span class="p">,</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>如下所示，在 JavaScript API 中的使用：</p><div class="codehilite"><pre><code class="language-js" data-lang="js"><span></span><span class="kd">var</span> <span class="nx">abi</span> <span class="o">=</span> <span class="cm">/* 编译器生成的 ABI */</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ClientReceipt</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">contract</span><span class="p">(</span><span class="nx">abi</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">clientReceipt</span> <span class="o">=</span> <span class="nx">ClientReceipt</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="s2">&quot;0x1234...ab67&quot;</span> <span class="cm">/* 地址 */</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">event</span> <span class="o">=</span> <span class="nx">clientReceipt</span><span class="p">.</span><span class="nx">Deposit</span><span class="p">();</span>
+
+<span class="c1">// 监听变化</span>
+<span class="nx">event</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">){</span>
+    <span class="c1">// 结果包含各种信息，包括`Deposit`事件传入的参数值。</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 或者通过回拨立刻查看</span>
+<span class="kd">var</span> <span class="nx">event</span> <span class="o">=</span> <span class="nx">clientReceipt</span><span class="p">.</span><span class="nx">Deposit</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><h3 id="low-level-interface-to-logs">日志低阶接口</h3><p>也可通过函数<code>log0</code>、<code>log1</code>、<code>log2</code>、<code>log3</code>和<code>log4</code>访问日志机制的底层接口。<code>logi</code>需要 i+1 个 <code>bytes32</code> 类型的入参，其中第一个参数值作为日志数据的一部分存储，其他参数值作为主题。下面示例和上面示例中的事件调用效果一样：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">10</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">f</span><span class="p">()</span> <span class="kr">public</span> <span class="kr">payable</span> <span class="p">{</span>
+        <span class="kt">bytes32</span> <span class="n">_id</span> <span class="o">=</span> <span class="mh">0x420042</span><span class="p">;</span>
+        <span class="n">log3</span><span class="p">(</span>
+            <span class="kt">bytes32</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">value</span><span class="p">),</span>
+            <span class="kt">bytes32</span><span class="p">(</span><span class="mh">0x50cb9fe53daa9737b786ab3646f04d0150dc50ef4e75f59509d83667ad5adb20</span><span class="p">),</span>
+            <span class="kt">bytes32</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">),</span>
+            <span class="n">_id</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>示例中很长的那串十六进制数等于<code>keccak256(&quot;Deposit(address,hash256,uint256)&quot;)</code>，即事件签名的哈希值。</p><h3 id="additional-resources-for-understanding-events">理解事件的额外资源</h3><ul><li><a href="https://github.com/ethereum/wiki/wiki/JavaScript-API#contract-events">JavaScript 文档</a></li><li><a href="https://github.com/debris/smart-exchange/blob/master/lib/contracts/SmartExchange.sol">事件示例</a></li><li><a href="https://github.com/debris/smart-exchange/blob/master/lib/exchange_transactions.js">在JavaScript中如何访问日志</a></li></ul><h2 id="Inheritance">继承(Inheritance)</h2><p>Solidity 通过复制含多态性代码来支持多继承。除非明确给出合约代码，否则所有函数调用都是虚拟的，这表示最远派生方式会被调用。</p><blockquote><p>注：如同面向对象编程中继承时，函数调用时从最低层的派生类向上搜索定位所需执行的函数。</p></blockquote><p>当合约从多个合约继承时，区块链上只创建一个合约，并将所有基类合约中的代码复制到当前创建的合约代码中。</p><p>继承模式和 <a href="https://docs.python.org/3/tutorial/classes.html#inheritance">Python</a> 很相似，特别是在多重继承上。</p><p>如下示例详细展示使用：</p><div class="codehilite"><pre><code class="language-Solidity" data-lang="Solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">owned</span><span class="p">()</span> <span class="p">{</span> <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">address</span> <span class="n">owner</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用 `is` 从其他合约派生，</span>
+<span class="c1">//派生合约能访问所有非私有成员，包括内部函数和状态变量。</span>
+<span class="c1">// 但不能使用`this`按外部访问方式调用它们。</span>
+<span class="kd">contract</span> <span class="n">mortal</span> <span class="kr">is</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">)</span> <span class="nb">selfdestruct</span><span class="p">(</span><span class="n">owner</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 抽象合约只为了让编译器知晓而提供接口，注意函数是无函数体的。</span>
+<span class="c1">// 如果派生合约未实现所有接口函数，那么合约只能当做抽象合约接口。 </span>
+<span class="kd">contract</span> <span class="n">Config</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">lookup</span><span class="p">(</span><span class="kt">uint</span> <span class="n">id</span><span class="p">)</span> <span class="kr">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">address</span> <span class="n">adr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">NameReg</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">register</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">name</span><span class="p">)</span> <span class="kr">public</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="n">unregister</span><span class="p">()</span> <span class="kr">public</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="c1">// 可多继承，注意 `owned` 也是 `mortal` 的基类，</span>
+<span class="c1">// 但这里只有单个`owner`实例（像 C++ 的虚拟接口）。 </span>
+<span class="kd">contract</span> <span class="n">named</span> <span class="kr">is</span> <span class="n">owned</span><span class="p">,</span> <span class="n">mortal</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">named</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="mh">0xD5f9D8D94886E70b06E474c3fB14Fd43E2f23970</span><span class="p">);</span>
+        <span class="n">NameReg</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">lookup</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 函数可以被其他拥有相同函数名和相同数量/类型的入参的其他函数重写。</span>
+    <span class="c1">// 如果重写函数有不同类型的出参，则会报错。</span>
+    <span class="c1">// 局部和消息调用均会执行重写函数。</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="mh">0xD5f9D8D94886E70b06E474c3fB14Fd43E2f23970</span><span class="p">);</span>
+            <span class="n">NameReg</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">lookup</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">unregister</span><span class="p">();</span>
+            <span class="c1">// 仍可调用被重写的函数</span>
+            <span class="n">mortal</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 如果父合约构造器有入参，则需在头部提供，</span>
+<span class="c1">// 或者在派生合约的构造器中使用修饰符调用方式提供</span>
+<span class="c1">// （见下节：基类构造函数参数）</span>
+<span class="kd">contract</span> <span class="n">PriceFeed</span> <span class="kr">is</span> <span class="n">owned</span><span class="p">,</span> <span class="n">mortal</span><span class="p">,</span> <span class="n">named</span><span class="p">(</span><span class="s">&quot;GoldFeed&quot;</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">function</span> <span class="n">updateInfo</span><span class="p">(</span><span class="kt">uint</span> <span class="n">newInfo</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">)</span> <span class="n">info</span> <span class="o">=</span> <span class="n">newInfo</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="kd">function</span> <span class="n">get</span><span class="p">()</span> <span class="kr">public</span> <span class="kr">view</span> <span class="k">returns</span><span class="p">(</span><span class="kt">uint</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">info</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="kt">uint</span> <span class="n">info</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>注意，上面示例中调用 <code>mortal.kill()</code> 来“转发”销毁合约请求，这样写是<strong>有问题</strong>的。见如下示例说明：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">owned</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">address</span> <span class="n">owner</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">mortal</span> <span class="kr">is</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">)</span> <span class="nb">selfdestruct</span><span class="p">(</span><span class="n">owner</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Base1</span> <span class="kr">is</span> <span class="n">mortal</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="cm">/* do cleanup 1 */</span> <span class="n">mortal</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Base2</span> <span class="kr">is</span> <span class="n">mortal</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="cm">/* do cleanup 2 */</span> <span class="n">mortal</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Final</span> <span class="kr">is</span> <span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div><p>调用<code>Final.kill()</code>时，将调用被派生重写的<code>Base2.kill()</code>，而绕过 <code>Base1.kill()</code>。是因为编译器不知道有<code>Base1</code> ，解决办法是使用<code>super</code> ：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">owned</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">address</span> <span class="n">owner</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">mortal</span> <span class="kr">is</span> <span class="n">owned</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">==</span> <span class="n">owner</span><span class="p">)</span> <span class="nb">selfdestruct</span><span class="p">(</span><span class="n">owner</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Base1</span> <span class="kr">is</span> <span class="n">mortal</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="cm">/* do cleanup 1 */</span> <span class="nb">super</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kd">contract</span> <span class="n">Base2</span> <span class="kr">is</span> <span class="n">mortal</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">kill</span><span class="p">()</span> <span class="kr">public</span> <span class="p">{</span> <span class="cm">/* do cleanup 2 */</span> <span class="nb">super</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Final</span> <span class="kr">is</span> <span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div><p>如果<code>Base2</code>用<code>super</code>调用函数，它不再是简单地对一个基类合约函数调用，而是在最终的继承图中依次向上调用每个基类上的这个函数。最终 <code>Base.kill()</code> 被调用（注意，最终的继承顺序是 —— 从继承图底层合约开始：Final，Base2，Base1，mortal，owned）。当使用<code>super</code>时,被调实际函数即使类型已知但在使用它的类的上下文中是未知的。</p><h2 id="arguments-for-base-constructors">基类构造函数参数</h2><p>派生合约给基类合约提供所需参数，有两种方式：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">Base</span> <span class="p">{</span>
+    <span class="kt">uint</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="n">Base</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_x</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="n">_x</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Derived</span> <span class="kr">is</span> <span class="n">Base</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">Derived</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_y</span><span class="p">)</span> <span class="n">Base</span><span class="p">(</span><span class="n">_y</span> <span class="o">*</span> <span class="n">_y</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>一种是直接在继承列表上（<code>is Base(7)</code>），另一种是作为派生合约的构造函数头部修饰符的一部分（<code>Base(_y * _y)</code>）。如果构造函数的参数是常量来定义合约行为或描述用的，第一种方式更简单。如果基类的构造函数参数取决于派生合约的构造函数参数，则必须使用第二种方法。如果在上面这个愚蠢的例子中同时使用了这两种方式，那么第二种修饰符风格的优先。</p><h2 id="multiple-inheritance-and-linearization">多重继承与线性</h2><p>允许多重继承的编程语言必须处理几个问题。一是<a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">钻石问题</a>，Solidity 沿用 Python 方式，使用 <a href="https://zh.wikipedia.org/wiki/C3线性化">C3 线性化</a>，在基类有向无环图中强制使用特定顺序。坏处是过于单一，不允许一些继承关系，而特别关键是<code>is</code>后基类书写顺序是直接影响继承顺序的。在下面的代码中，Solidity 会报错：“继承关系不能线性化(Linearization of inheritance graph impossible)”。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="c1">// 无法编译</span>
+<span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">X</span> <span class="p">{}</span>
+<span class="kd">contract</span> <span class="n">A</span> <span class="kr">is</span> <span class="n">X</span> <span class="p">{}</span>
+<span class="kd">contract</span> <span class="n">C</span> <span class="kr">is</span> <span class="n">A</span><span class="p">,</span> <span class="n">X</span> <span class="p">{}</span>
+</code></pre></div><p>原因是 <code>C</code> 请求 <code>X</code> 重写 <code>A</code>（通过<code>A，X</code>的特定顺序），但是 <code>A</code> 自身请求重写 <code>X</code>，就形成了无法解决的循环矛盾。</p><blockquote><p>注： X -&gt; A ， A -&gt; X 形成环路。必须是有向无环的线性顺序。</p></blockquote><p>书写的简单原则是：从“最基类”到“最多派生”的顺序​​指定基类。</p><h3 id="inheriting-different-kinds-of-members-of-the-same-name">多继承后同名处理</h3><p>除状态变量的get函数能重写公共函数外，当继承使得函数和修饰器有相同名称时，视为错误。还包括事件和修饰器同名、函数和事件同名。</p><h2 id="abstract-contracts">抽象函数</h2><p>合约函数可缺少函数实现（请注意函数声明头以<code>;</code>结束），如下示例：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">Feline</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">utterance</span><span class="p">()</span> <span class="kr">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>此时合约不能被编译（即使它们包含已实现函数），但它可用于做基类合约：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">contract</span> <span class="n">Feline</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">utterance</span><span class="p">()</span> <span class="kr">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">Cat</span> <span class="kr">is</span> <span class="n">Feline</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">utterance</span><span class="p">()</span> <span class="kr">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;miaow&quot;</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>注意：如果继承自抽象合约的合约没有通过实现所有函数接口，它本身仍然是抽象合约，无法编译。</p><h2 id="interfaces">接口</h2><p>接口同抽象合约类似，除他们不能有任何函数实现，还有如下限制：</p><ul><li>不能继承自其它合约和接口。</li><li>不能定义构造器。</li><li>不能定义变量。</li><li>不能定义结构。</li><li>不能定义枚举。</li></ul><p>在未来，可能会取消某些限制。</p><p>接口基本上仅限于合约 ABI 可代表的内容，且要求在 ABI 和界面之间转换时不会丢失任何信息。</p><p>接口有自己的关键字<code>interface</code>：</p><pre><code>pragma solidity ^0.4.11;
+
+interface Token {
+    function transfer(address recipient, uint amount) public;
+}
+</code></pre><p>合约能继承其他合约，也可继承接口。</p><h2 id="libraries">库(Library)</h2><p>库同合约类似，其用途是在特殊地址上部署一次，用<code>DELEGATECALL</code>（Homestead版是<code>CALLCODE</code>）调用库代码。使得调用库函数时，库代码将在调用合约的上下文中执行，即库代码中的 <code>this</code> 指向当前调用合约，尤其是可以访问来自调用合约的存储。</p><p>由于库是一个独立的源代码，因此它只能访问调用合约的状态变量（需明确定义状态变量，否则无法命名访问）。库函数只能在不修改状态（即库函数是 <code>view</code> 或者 <code>pure</code>）情况下被直接调用（不使用<code>DELEGATECALL</code>调用），因为库是无状态的。尤其是不可能销毁一个库，除非 Solidity 现有数据类型被丢弃。</p><p>库可被视为使用它们的合约的隐含基类合约。它们不会在继承层次结构中显式可见，但对库函数的调用看起来就像调用显式基类的函数（<code>L.f()</code>，<code>L</code>是库名）。另外，库的<code>internal</code>函数对所有合约是可见的，就像库是基类合约一样。当然，对内部函数的调用使用内部调用约定，这意味着所有内部类型都可传递，并且内存类型将通过引用传递并且不会被复制。为了在 EVM 中实现这一点，内部库函数的代码和从其中调用的所有函数将在编译时被拉入到调用合约中，用常规的<code>JUMP</code>调用，而非<code>DELEGATECALL</code>。</p><p>如下示例说明了如何使用库（务必查看<a href="http://solidity.readthedocs.io/en/latest/contracts.html#using-for">using for</a>获取更高级的示例实现 Set）。</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">library</span> <span class="n">Set</span> <span class="p">{</span>
+  <span class="c1">// 定义新数据结构，用于在调用合约中存储</span>
+  <span class="kd">struct</span> <span class="n">Data</span> <span class="p">{</span> <span class="kd">mapping</span><span class="p">(</span><span class="kt">uint</span> <span class="o">=&gt;</span> <span class="kt">bool</span><span class="p">)</span> <span class="n">flags</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="c1">//注意，第一个入参是 `storage` 引用，因此只是一个存储位置指针，无内容传递。</span>
+  <span class="c1">//是库的一个特殊功能。 </span>
+  <span class="c1">// 如果函数能看到对象成员，则惯用`self`命名第一个入参。</span>
+  <span class="kd">function</span> <span class="n">insert</span><span class="p">(</span><span class="n">Data</span> <span class="kr">storage</span> <span class="n">self</span><span class="p">,</span> <span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span>
+      <span class="kr">public</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">flags</span><span class="p">[</span><span class="nb">value</span><span class="p">])</span>
+          <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// 已存在</span>
+      <span class="n">self</span><span class="p">.</span><span class="n">flags</span><span class="p">[</span><span class="nb">value</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="n">remove</span><span class="p">(</span><span class="n">Data</span> <span class="kr">storage</span> <span class="n">self</span><span class="p">,</span> <span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span>
+      <span class="kr">public</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="p">.</span><span class="n">flags</span><span class="p">[</span><span class="nb">value</span><span class="p">])</span>
+          <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// 不存在</span>
+      <span class="n">self</span><span class="p">.</span><span class="n">flags</span><span class="p">[</span><span class="nb">value</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="n">contains</span><span class="p">(</span><span class="n">Data</span> <span class="kr">storage</span> <span class="n">self</span><span class="p">,</span> <span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span>
+      <span class="kr">public</span>
+      <span class="kr">view</span>
+      <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">flags</span><span class="p">[</span><span class="nb">value</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="n">Set</span><span class="p">.</span><span class="n">Data</span> <span class="n">knownValues</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">register</span><span class="p">(</span><span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// 因为当前合约就是实例，因此不需要特定的实例调用库函数</span>
+        <span class="nb">require</span><span class="p">(</span><span class="n">Set</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">knownValues</span><span class="p">,</span> <span class="nb">value</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="c1">// 此合约中，可直接访问 knownValues.flags </span>
+<span class="p">}</span>
+</code></pre></div><p>当然，不必遵循这种方式来使用库：它们也可以在不定义结构数据类型的情况下使用。库函数也可以在没有任何存储参数的情况下工作，并且它们可以具有多个存储参考参数并且可在任何位置。</p><p>调用 <code>Set.contains</code>、<code>Set.insert</code>和<code>Set.remove</code>都被编译为调用（<code>DELEGATECALL</code>）外部合约/库。如果使用库，留意执行的是实际外部函数。<code>msg.sender</code>、<code>msg.value</code>和<code>this</code>仍然在调用中保留，（但是在 Homestead 版本中，因为使用<code>CALLCODE</code>，<code>msg.sender</code>和<code>msg.value</code>值已改变。）</p><p>下面示例展示的是如何在库中使用内存类型和内部函数，以实现自定义类型而无外部函数调用开销。</p><p><a id="set-example"></a></p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">library</span> <span class="n">BigInt</span> <span class="p">{</span>
+    <span class="kd">struct</span> <span class="n">bigint</span> <span class="p">{</span>
+        <span class="kt">uint</span><span class="p">[]</span> <span class="n">limbs</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">fromUint</span><span class="p">(</span><span class="kt">uint</span> <span class="n">x</span><span class="p">)</span> <span class="kr">internal</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="n">bigint</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">limbs</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">uint</span><span class="p">[](</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">add</span><span class="p">(</span><span class="n">bigint</span> <span class="n">_a</span><span class="p">,</span> <span class="n">bigint</span> <span class="n">_b</span><span class="p">)</span> <span class="kr">internal</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="n">bigint</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">limbs</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">uint</span><span class="p">[](</span><span class="n">max</span><span class="p">(</span><span class="n">_a</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span><span class="p">,</span> <span class="n">_b</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span><span class="p">));</span>
+        <span class="kt">uint</span> <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">uint</span> <span class="n">a</span> <span class="o">=</span> <span class="n">limb</span><span class="p">(</span><span class="n">_a</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="kt">uint</span> <span class="n">b</span> <span class="o">=</span> <span class="n">limb</span><span class="p">(</span><span class="n">_b</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">carry</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">a</span> <span class="o">||</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">==</span> <span class="kt">uint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">carry</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="n">carry</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">carry</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// too bad, we have to add a limb</span>
+            <span class="kt">uint</span><span class="p">[]</span> <span class="kr">memory</span> <span class="n">newLimbs</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">uint</span><span class="p">[](</span><span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">newLimbs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">limbs</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">newLimbs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">carry</span><span class="p">;</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">limbs</span> <span class="o">=</span> <span class="n">newLimbs</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">limb</span><span class="p">(</span><span class="n">bigint</span> <span class="n">_a</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">_limb</span><span class="p">)</span> <span class="kr">internal</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_limb</span> <span class="o">&lt;</span> <span class="n">_a</span><span class="p">.</span><span class="n">limbs</span><span class="p">.</span><span class="n">length</span> <span class="o">?</span> <span class="n">_a</span><span class="p">.</span><span class="n">limbs</span><span class="p">[</span><span class="n">_limb</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">max</span><span class="p">(</span><span class="kt">uint</span> <span class="n">a</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">b</span><span class="p">)</span> <span class="kr">private</span> <span class="kr">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kn">using</span> <span class="n">BigInt</span> <span class="k">for</span> <span class="n">BigInt</span><span class="p">.</span><span class="n">bigint</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">f</span><span class="p">()</span> <span class="kr">public</span> <span class="kr">pure</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="n">x</span> <span class="o">=</span> <span class="n">BigInt</span><span class="p">.</span><span class="n">fromUint</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="n">y</span> <span class="o">=</span> <span class="n">BigInt</span><span class="p">.</span><span class="n">fromUint</span><span class="p">(</span><span class="kt">uint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+        <span class="kd">var</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>由于编译器无法知道库将在哪里部署，因此这些地址必须由链接器填充到最终的字节码中（见 <a href="http://solidity.readthedocs.io/en/latest/using-the-compiler.html#commandline-compiler">使用命令行编译器</a>章节如何编译链接器）。如果地址未作为编译器的参数给出，编译后的十六进制代码将包含<code>__set______</code>形式的占位符（其中set是库的名称），这40个符合可手工使用库合同地址的十六进制编码替换填充。</p><p>与合约相比，库的限制：</p><ul><li>无状态变量。</li><li>不能继承或被继承。</li><li>不能接受以太币。</li></ul><blockquote><p>可能会在以后解除这些限制。</p></blockquote><h2 id="call-protection-for-libraries">安全调用库</h2><p>如前所述，如果调用库代码用<code>CALL</code>而不是<code>DELEGATECALL</code>或<code>CALLCODE</code>，则它将会恢复，除非调用函数是视图或纯函数。</p><p>EVM 没有提供直接的方式让合约检测它是否使用<code>CALL</code>来调用库，但合约可以使用<code>ADDRESS</code>指令来找出它当前正在运行的“哪里”。生成的代码将此地址与构造时使用的地址进行比较，以确定调用方式。</p><p>更具体地说，库的运行时代码始终以一个推送指令开始，该指令在编译时为20个字节的零。当部署代码运行时，此常量在内存中被当前地址替换，并且此修改后的代码存储在合同中。在运行时，这会导致部署实时地址成为第一个被推入堆栈的常量，调度程序代码会将当前地址与此常量进行比较，以查看任何非视图和非纯函数。</p><h2 id="using-for">使用 For</h2><p>指令 <code>using A for B;</code> 能附加库函数（从库 <code>A</code>）到任意类型(<code>B</code>)。这些函数将接受对象作为第一个入参。被调用对象将作为这些函数的第一个入参接收（像 Pythone 中的 <code>self</code>变量）。</p><p><code>using A for *</code>的效果是库<code>A</code>的函数被附加到任何类型。</p><p>在这两种情况下，都附加了所有函数，即使是第一个参数的类型与对象类型不匹配的函数。将在函数被调用的地方检查类型并执行函数重载解析。</p><p><code>using A for B</code> 指令只对于当前作用域有效，该作用域现在仅限于一个合约，但后续将被提升到全局作用域，这样通过包含一个模块使其数据类型（包括库函数）均可用，而无需额外增加代码。</p><p>使用 For 重写前面 <a href="#set-example">set 示例</a>，可用这种方式扩展基本类型：</p><div class="codehilite"><pre><code class="language-solidity" data-lang="solidity"><span></span><span class="kr">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="kd">library</span> <span class="n">Search</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">indexOf</span><span class="p">(</span><span class="kt">uint</span><span class="p">[]</span> <span class="kr">storage</span> <span class="n">self</span><span class="p">,</span> <span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span>
+        <span class="kr">public</span>
+        <span class="kr">view</span>
+        <span class="k">returns</span> <span class="p">(</span><span class="kt">uint</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="nb">value</span><span class="p">)</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">return</span> <span class="kt">uint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">contract</span> <span class="n">C</span> <span class="p">{</span>
+    <span class="kn">using</span> <span class="n">Search</span> <span class="k">for</span> <span class="kt">uint</span><span class="p">[];</span>
+    <span class="kt">uint</span><span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="n">append</span><span class="p">(</span><span class="kt">uint</span> <span class="nb">value</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="n">data</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="nb">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="n">replace</span><span class="p">(</span><span class="kt">uint</span> <span class="n">_old</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">_new</span><span class="p">)</span> <span class="kr">public</span> <span class="p">{</span>
+        <span class="c1">// This performs the library function call</span>
+        <span class="kt">uint</span> <span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">_old</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="kt">uint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">data</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">_new</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">_new</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>注意，所有库的调用实际是 EVM 函数调用。意味着如果你传递内存类型或值类型，将会发生拷贝。甚至是<code>self</code>变量。仅有的解决办法是使用存储引用变量。</p><h2 id="__source">source</h2><div><a href="https://github.com/ysqi/etheraction/blob/master/content/solidity/doc/contracts.md" title="github source file" class="md-source-file">contracts.md </a><a href="https://github.com/ysqi/etheraction/edit/master/content/solidity/doc/contracts.md" title="github source file" class="md-source-file">editor source file</a></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="https://ether.goall.top/solidity/doc/control-structures.html" title="表达式与控制结构" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">previous</span> 表达式与控制结构</span></div></a><a href="https://ether.goall.top/action/" title="实战" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">next</span> 实战</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">&copy; 2018 根据Apache 2.0 许可发布</div>powered by <a href="https://gohugo.io/" rel="nofollow">Hugo</a> and <a href="https://squidfunk.github.io/mkdocs-material/" rel="nofollow">Material for Hugo</a></div><div class="md-footer-social"><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><a href="https://github.com/ysqi" class="md-footer-social__link fa fa-github"></a> <a href="https://yushuangqi.com" class="md-footer-social__link fa fa-wordpress"></a> <a href="https://weibo.com/234665601" class="md-footer-social__link fa fa-weibo"></a> <a href="https://www.zhihu.com/people/_ysqi/" class="md-footer-social__link fa fa-user-circle"></a> <a href="mailto:devysqi@gmail.com" class="md-footer-social__link fa fa-envelope-o"></a></div></div></div></footer></div><script>var base_url = '';
+      var repo_id  = '';</script><script>var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      for(var i = 0; i < headers.length; i++) {
+          var a = document.createElement("a");
+          a.setAttribute("class", "headerlink");
+          a.setAttribute("href", "#" + headers[i].id);
+          a.setAttribute("title", "Permanent link")
+          a.innerHTML = "¶";
+          headers[i].appendChild(a);
+      }</script><script src="https://ether.goall.top/javascripts/application.js"></script><script>app.initialize({version:"0.17.2",url:{base:".."}})</script></body></html>
