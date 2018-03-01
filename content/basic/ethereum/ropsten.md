@@ -345,7 +345,7 @@ no_download = false
 no_consensus = false
 no_persistent_txqueue = false
 	
-chain = "/Users/freeza/eth/ropsten.parity.json"
+chain = "$HOME/eth/ropsten.parity.json"
 base_path = "$HOME/eth/ropsten.parity/"
 db_path = "$HOME/eth/ropsten.parity/chains"
 keys_path = "$HOME/eth/ropsten.parity/keys"
