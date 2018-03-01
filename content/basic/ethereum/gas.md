@@ -10,75 +10,101 @@ menu:
 
 
 ## 背景介绍 {#beijing}
-以太坊是一个区块链网络，而Ether(ETH)是这个网络的助燃器。当你发送Token、执行合约、转移ETH或者在此区块上干其他的。你必须为此计算而支出，此支出是通过 `Gas`计算，最终将gas以ETH支付。
+### gas 的作用
+以太坊是一个区块链网络，而Ether(ETH)是这个网络的助燃器。当你在此区块链上**发起**任何交易（发送Token、执行合约、转移ETH等）时，你都必须为此交易支出一定量的ETH。此支出以 `Gas` 为单位计算。
 
-需要注意的是，无论交易成功与否，你都需为此支付手续费。即使交易失败，可矿工还是得为此交易进行校验和计算，你占用使用了计算资源所以必须和成功的交易一样，为此支付手续费。
-
-你可在 [etherscan.io](etherscan.io) 上查看交易手续费（`gas limit` * `gas price`）的情况，在钱包中你是无法选择多少交易费的，因为实际交易费是矿工根据计算得出的，并记录在包含此交易的区块中。
-
-## 概要 {#base}
-当你听到`gas`时，是在讨论两个东西：
-
-+ Gas Limit
-+ Gas Price
-
-交易费计算就是`Gas Limit`*`Gas Price`。大家说“Gas”时，一般所值得是“Gas Limit”
-
-你可以把`gas limit`看成是汽车所需多少升燃油。把`gas price`看成是燃油单价。
-
-+ 对于汽车，每`升(unit)`汽油 `￥6.46 （price）`
-+ 对于以太坊,每`gas( unit)` 是 `20 GWEI (price)`
-
-继续想，就是：
-
-+ 10升汽油就是 ￥64.6
-+ 21000 个 gas 就是 20*21000 GWEI= 420000 GWEI= 0.00042 ETH
-
-也就是说本次交易手续为 0.00042 Ether。
-
-发送Token一般需要 `~50000` gas 到 `~100000` gas ,因此交易手续费增加到 `0.001 ETH - 0.002 ETH`。
-
-其中以太坊ETH到GWEI的转换关系是，这些多是以太币的计算单位：
-
-+ Kwei(Babbage) = 10^{3} Wei
-+ Mwei(Lovelace) = 10^{6} Wei
-+ Gwei(Shannon) = 10^{9} Wei
-+ Microether(Szabo) = 10^{12} Wei
-+ Milliether(Finney) = 10^{15} Wei
-+ Ether = 10^{18} Wei
-
-
-## Gas 
-Gas 是以太坊中一种特定的命名，表示执行一个操作所需要的多少计算工作。 比如要执行一次加密[Keccak256](https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use)将消耗30gas。在以太坊中每个操作动作都有对应的gas。更多内容可查看[What is gas (StackExchange)](https://ethereum.stackexchange.com/questions/3/what-is-meant-by-the-term-gas)。
+### gas 的意义
+gas 是以太坊中一种特定的命名，表示执行一个操作所需要的多少计算工作。 比如要执行一次加密[Keccak256](https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use)将消耗30gas。在以太坊中每个操作动作都有对应的gas。更多内容可查看[What is gas (StackExchange)](https://ethereum.stackexchange.com/questions/3/what-is-meant-by-the-term-gas)。
 
 一般交易需要花费多少gas则取决于此完成此交易过程中的所执行的操作的累计gas。
 
+### Gas 的单位
+ETH 的最小单位为 ``wei``，其各种换算关系如下：
+	
++ 1 Kwei(Babbage) = 10^{3} wei
++ 1 Mwei(Lovelace) = 10^{6} wei
++ 1 Gwei(Shannon) = 10^{9} wei
++ 1 Microether(Szabo) = 10^{12} wei
++ 1 Milliether(Finney) = 10^{15} wei
++ 1 ETH = 10^{18} wei
 
-## Gas Limit
-这个 `gas limit`之所以称之为limit是因为它代表的是你将为此次交易所支付的每单位gas的最大费用。以避免合约中的错误引起不可预计的开销，合约执行进入一个计算死循环就势必会1ETH...10ETH直至耗尽你的余额。
+在以太坊交易中，我们常用的单位为 ``Gwei``，这个单位也是``Gas``常用的单位。在默认情况下，1 Gas = 20 Gwei。
+
+### 交易费查看
+你可在 [etherscan.io](etherscan.io) 上查看交易手续费（`gas limit` * `gas price`）的情况，在钱包中你是无法选择多少交易费的，因为实际交易费是矿工根据计算得出的，并记录在包含此交易的区块中。
+
+### 需要注意的地方
+需要注意的是，无论交易成功与否，你都需为此支付手续费。即使交易失败，矿工还是得为此交易进行校验和计算，因为你占用使用了计算资源，所以得为此支付手续费。
+
+## 概要 {#base}
+当你听到`gas`时，是在讨论三个东西：
+
++ 交易中的 gas limit（以下称 gas）
++ gas price
++ 区块中的 gas limit（以下称 gas limit)
+
+---
+
+### 交易中的 ``gas limit``
+交易中的 ``gas limit`` 之所以称之为``limit``是因为它代表的是你将为此次交易所支付的每单位gas的最大费用。以避免合约中的错误引起不可预计的开销，合约执行进入一个计算死循环就势必会1ETH...10ETH直至耗尽你的余额。
 
 然而，一笔交易所必须支付的gas量已经在区块中通过该交易已执行的代码数记录。如果你不想支出太多在gas上，设置底的gas limit 是没有太多帮助的。你必须支付足够的gas已开销本交易所必要的计算资源，否则将出现一个 `Out of Gas`的错误。即使交易失败，你也必须为已占用的计算资源所支付手续费。
 
+如何准确的预估 ``gas limit``? 在 ``go-ethereum`` 和 ``parity`` 等项目中，都有对应的接口来计算交易中合适的 ``gas limit``。
+
 未使用的gas将在交易后返回给你。比如你发送 1 ETH 到另一个账户B，设置 gas limit 为 400000，将有 400000 - 21000 返回给你。然而如果你是发送 1 ETH 到一个合约且交易失败（说，投票已截止），400000 都会被用掉，没啥返还给你。
 
-> 21000 是标准转账交易的gas limit。
+> 21000 是标准转账交易的``gas limit``。
 
-
-## Gas Price
+---
+### ``gas price``
 如果你想让交易花费更少，你能够做的是降低你愿意支付的gas单价。这个价格会此交易影响的确认速度。
 
 **正常情况下**
 
-+ 50 GWEI Gas Price 几乎总能将你的交易放到下一个区块。
-+ 20 GWEI 通常会把它放到未来的几个区块中。
-+ 8 GWEI  通常会在未来几分钟内放入区块。
++ 50 Gwei 几乎总能将你的交易放到下一个区块。
++ 20 Gwei 通常会把它放到未来的几个区块中。
++ 8 Gwei  通常会在未来几分钟内放入区块。
 
 **在Token创建后，因为抢购太疯狂**
 
-+ 50 GWEI 是创建Token时合同所定义的`max gas price`。高于这个限制的交易都会失败，交易前你得检查该Token中所设置最大燃油单价。
-+ 50 GWEI  是你应该在抢购时所设置的燃油单价。
-+ 如果你想在在Token创建期间发送交易（非Token创建），你有两个选择：等待一会儿直到Token创建结束，或者提高燃油单价超过50 GWEI。
++ 50 Gwei 是创建Token时合同所定义的`max gas price`。高于这个限制的交易都会失败，交易前你得检查该Token中所设置最大``gas price``。
++ 50 Gwei  是你应该在抢购时所设置的``gas price``。
++ 如果你想在在Token创建期间发送交易（非Token创建），你有两个选择：等待一会儿直到Token创建结束，或者提高燃油单价超过50 Gwei。
 
+---
+
+### 交易费（``tx fee``）
+交易费（`tx fee`）计算公式：
+
+  `tx fee` = `gas` * `gas price`
+
+你可以把`gas`看成是汽车所需多少升燃油。把`gas price`看成是燃油单价。
+
++ 对于汽车，每`升(unit)`汽油 `￥6.46 （price）`
++ 对于以太坊,每`gas(unit)` 是 `20 Gwei (price)`
++ 汽油的价格是可以变动的，gas 的价格同样也可以变动
+
+假设此时我们沿用以上汽油和gas的单价，那么：
+
++ 10升汽油价格为 ￥64.6
++ 21000 个 Gas 价格就是 20 * 21000 Gwei = 420000 Gwei = 0.00042 ETH
+
+也就是说本次交易费为 0.00042 ETH。
+
+发送Token一般需要 `~50000` gas 到 `~100000` gas ,因此交易费增加到 `0.001 ETH - 0.002 ETH`。
+
+---
+
+### 区块中的 ``gas limit``
+
+区块的作用是记录交易，每一笔交易都有一定的数据量，每一个区块也有他自己的区块大小。
+
+那么区块的大小到底要多少才合适呢？这个问题由区块中的 ``gas limit`` 来解决。
+
+一个区块中有一个参数叫做 ``gas limit``，这个数值一般在 600 ~ 800 MGwei(1e6 * 1e9 wei)左右。当一笔交易被记录到一个区块中时，该区块剩余的 ``gas limit`` 就会减少一部分，减少的这部分等于该笔交易的 ``gas`` 大小。当该区块的 ``gas limit`` 值剩下的不多时，该区块便打包完毕，不再记录其他交易信息。而未被打包的交易由接下来的新区块负责打包。当一笔交易的 ``gas`` 超过了某个区块的 ``gas limit`` 剩余值，那么这笔交易**一定**不会被该区块打包。也就是说，如果你在以太坊上发起了一笔交易，这笔交易的 ``gas`` 超过了 800 MGwei，这笔交易可能就永远没办法被以太坊区块链打包，也就是说，这笔交易有可能永远都不会被区块链承认（但是不要着急，后面我们有一个巧妙的方法来解决这样的问题，也就是解决区块链堵塞的问题）。
+
+---
 
 ## 思考 {#QA}
 
